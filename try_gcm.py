@@ -1,17 +1,33 @@
 import requests
+import json
 
 url = "https://android.googleapis.com/gcm/send"
 # PUT YOUR TOKEN API HERE
 YOUR_TOKEN = 'AIzaSyDAybrJQrslcepbNL5FGKx1e1ENGMeftYU'
 key = "key={0}".format(YOUR_TOKEN)
-DEVICE_TOKEN = "de27nwrGl_g:APA91bHYoev4-3TdTRrelO1pdx7Y-7QNysX2Ebcqq1q8w38lk6Pdtiq5TeVHirEQQgh6wGY61yQs0QdBaJASXrAxBEvMIwWdmUIIZmEayOziKP_fO-S6dmfs3Hn9_ab21BR_2GTSUony"
+DEVICE_TOKEN = "cI17lG4Id_c:APA91bHjPzrd4Nyw8pLjGR8bnJMXnPdVWDFv4kuI4vZVlBkBnr7iAnM7ajhj-OtYhXaa8hQGZlVEwHAVbg2daFH-mDZrhNlGANl43rRCv7yGOBLrsQKxyMU3ilv-2sB3mY-0jB5JlSbu"
 
-payload = "{\n    \"data\":{ \n        \"message\": \"ITS ALIVE!!\"\n    },\n    \"to\":\"{0}"\n}".format(DEVICE_TOKEN)
+# notification_object example:
+#
+# {
+#  "data": {
+#      "message" : "ITS ALIVE"
+#  },
+#  "to" : "cI17lG4Id_c:APA91bHjPzrd4Nyw8pLjGR8bnJMXnPdVWDFv4kuI4vZVlBkBnr7iAnM7ajhj-OtYhXaa8hQGZlVEwHAVbg2daFH-mDZrhNlGANl43rRCv7yGOBLrsQKxyMU3ilv-2sB3mY-0jB5JlSbu"
+# }
+#
+
+notification_object = {}
+data = {}
+data['message'] = "ITS ALIVE!!!"
+notification_object['data'] = data
+notification_object['to'] = DEVICE_TOKEN
+
 headers = {
     'authorization': key,
     'content-type': "application/json"
     }
 
-response = requests.request("POST", url, data=payload, headers=headers)
+response = requests.request("POST", url, data=json.dumps(notification_object), headers=headers)
 
 print(response.text)

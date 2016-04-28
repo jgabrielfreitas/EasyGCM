@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataController = new DataController(this);
 
-        if (dataController.readBooleanData(TOKEN_KEY) == false) {
+        if (!dataController.readBooleanData(TOKEN_KEY)) {
             tokenStatusTextView.setText(R.string.registering);
         } else
             tokenStatusTextView.setText(android.R.string.yes);
@@ -83,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
             case SUCCESS:
                 tokenStatusTextView.setText(R.string.happy_registered);
+                dataController.writeData(TOKEN_KEY, true);
                 break;
             case FAILURE:
+                dataController.writeData(TOKEN_KEY, false);
                 tokenStatusTextView.setText(R.string.sad_not_registeres);
                 break;
         }
