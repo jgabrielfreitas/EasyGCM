@@ -63,6 +63,7 @@ public class PushService extends PushListenerService {
 ```
 
 * Create your own *RegisterTokenIntentService* and overwrite his methods
+
 > **IMPORTANT:** By default, onHandleIntent method only register the device token in the Google server
 
 ```java
