@@ -152,7 +152,7 @@ You can check whether the notification is functioning well
 > First of all: Edit the script with your project info and your token device
 
 ```terminal
-python try_gcm.py
+$ python try_gcm.py
 ```
 
 
