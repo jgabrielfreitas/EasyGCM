@@ -16,4 +16,6 @@
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
     <string name="registering">Registering..</string>
+    <string name="happy_registered">Registered :D</string>
+    <string name="sad_not_registeres">Not registered :(</string>
 </resources>

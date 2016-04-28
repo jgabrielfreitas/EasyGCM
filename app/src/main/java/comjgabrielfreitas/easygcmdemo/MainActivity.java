@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
         switch (result) {
 
             case SUCCESS:
-                tokenStatusTextView.setText("Registered :D");
+                tokenStatusTextView.setText(R.string.happy_registered);
                 break;
             case FAILURE:
-                tokenStatusTextView.setText("Not registered :(");
+                tokenStatusTextView.setText(R.string.sad_not_registeres);
                 break;
         }
     }
