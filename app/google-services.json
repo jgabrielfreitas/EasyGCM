@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "396051914799",
+    "project_id": "gcmtestgithub"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396051914799:android:5520f09a8b5a4828",
+        "android_client_info": {
+          "package_name": "comjgabrielfreitas.easygcmdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj5GzJw3okJTU_RGbX72PCxnWlhxj3QCM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

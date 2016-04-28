@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- IMPORTANT -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +20,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- [START gcm_receiver] -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.flip.android" />
+            </intent-filter>
+        </receiver>
+        <!-- [END gcm_receiver] -->
+
+        <!-- IMPORTANT: your PushListenerService child here -->
+        <service
+            android:name=".notification.PushService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.jgabrielfreitas.easygcm.RefreshPushTokenService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <!-- IMPORTANT: your RegisterTokenIntentService child here -->
+        <service
+            android:name=".notification.RegisterTokenService"
+            android:exported="false" />
+
     </application>
 
 </manifest>

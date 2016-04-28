@@ -5,7 +5,14 @@ import android.util.Log;
 import com.google.android.gms.gcm.GcmPubSub;
 import com.jgabrielfreitas.easygcm.RegisterTokenIntentService;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.IOException;
+
+import comjgabrielfreitas.easygcmdemo.R;
+
+import static comjgabrielfreitas.easygcmdemo.RegisterResult.FAILURE;
+import static comjgabrielfreitas.easygcmdemo.RegisterResult.SUCCESS;
 
 /**
  * Created by JGabrielFreitas on 26/04/16.
@@ -15,20 +22,15 @@ public class RegisterTokenService extends RegisterTokenIntentService {
     private static final String TAG = "RegIntentService";
     private static final String[] TOPICS = {"global"};
 
-    /**
-     * Creates an IntentService.
-     *
-     * @param senderId Initially this call goes out to the network to retrieve the token, subsequent calls are local.<br>
-     *                 R.string.gcm_defaultSenderId (the Sender ID) is typically derived from google-services.json.<br>
-     *                 See https://developers.google.com/cloud-messaging/android/start for details on this file.
-     */
-    public RegisterTokenService(String senderId) {
-        super(senderId);
+    public RegisterTokenService() {
+        senderId = "396051914799"; // getString(R.string.gcm_defaultSenderId);
+        DEBUG = true; // to show token on console
     }
 
     @Override
     public void sendRegistrationToServer(String token) {
-
+        // TODO here, you'll register your token
+        EventBus.getDefault().post(SUCCESS);
     }
 
     @Override
@@ -45,6 +47,8 @@ public class RegisterTokenService extends RegisterTokenIntentService {
 
     @Override
     public void onRegistrationFailure() {
-        Log.d(TAG, "OHHH NOOOO");
+        Log.e(TAG, ">>> OHHH NOOOO");
+        EventBus.getDefault().post(FAILURE);
     }
+
 }
