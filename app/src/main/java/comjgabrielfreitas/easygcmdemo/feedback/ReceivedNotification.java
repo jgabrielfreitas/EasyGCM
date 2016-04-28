@@ -53,10 +53,8 @@ public class ReceivedNotification {
 
 
         final String ticker = exampleString;
-        final String title = res.getString(
-                R.string.received_notification_title_template, exampleString);
-        final String text = res.getString(
-                R.string.received_notification_placeholder_text_template, exampleString);
+        final String title = "New notification";
+        final String text = exampleString;
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 
@@ -104,26 +102,6 @@ public class ReceivedNotification {
                                 0,
                                 new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")),
                                 PendingIntent.FLAG_UPDATE_CURRENT))
-
-                // Example additional actions for this notification. These will
-                // only show on devices running Android 4.1 or later, so you
-                // should ensure that the activity in this notification's
-                // content intent provides access to the same actions in
-                // another way.
-                .addAction(
-                        R.drawable.ic_action_stat_share,
-                        res.getString(R.string.action_share),
-                        PendingIntent.getActivity(
-                                context,
-                                0,
-                                Intent.createChooser(new Intent(Intent.ACTION_SEND)
-                                        .setType("text/plain")
-                                        .putExtra(Intent.EXTRA_TEXT, "Dummy text"), "Dummy title"),
-                                PendingIntent.FLAG_UPDATE_CURRENT))
-                .addAction(
-                        R.drawable.ic_action_stat_reply,
-                        res.getString(R.string.action_reply),
-                        null)
 
                 // Automatically dismiss the notification when it is touched.
                 .setAutoCancel(true);
