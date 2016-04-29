@@ -46,6 +46,7 @@ apply plugin: 'com.google.gms.google-services'
 ```
 
 * Create your own *GcmListenerService* and overwrite the method onReceived
+
 > The method **onReceived** will be called when your device receive a notification form GCM
 
 ```java
